@@ -112,6 +112,11 @@ fn from_str() {
 }
 
 #[test]
+fn parse_with_params() {
+    assert!(Url::parse_with_params("http://testing.com/this", [("lang", "rust")].iter()).is_ok());
+}
+
+#[test]
 fn issue_124() {
     let url: Url = "file:a".parse().unwrap();
     assert_eq!(url.path(), "/a");
